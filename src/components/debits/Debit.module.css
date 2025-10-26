@@ -1,0 +1,29 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.deleteButton {
+    background: transparent;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.editButton {
+    background: transparent;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.debit .deleteButton:hover {
+    color: var(--red-500);
+}
+
+.debit .editButton:hover {
+    color: skyblue;
+}

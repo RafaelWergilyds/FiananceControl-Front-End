@@ -1,0 +1,48 @@
+.header {
+    background: white;
+    display: flex;
+    padding: 2rem 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px rgba(5, 199, 233, 0.1);
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-left: auto;
+    cursor: pointer;
+    transition: all 125ms;
+}
+
+.profileButton {
+    border: 1px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--black);
+    border: 1px;
+    border-radius: 8px;
+    height: 50px;
+    padding: 0 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 125ms;
+}
+
+.header .logoutButton:hover {
+    background: black;
+    color: white;
+}

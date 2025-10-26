@@ -1,0 +1,56 @@
+.debitListContainer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding: 0.75rem;
+    width: 75rem;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(5, 199, 233, 0.1);
+}
+
+.title {
+    display: flex;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.addDebitButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--black);
+    border: 1px;
+    border-radius: 8px;
+    height: 50px;
+    padding: 0 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 125ms;
+}
+
+.debitListContainer .addDebitButton:hover {
+    background: black;
+    color: white;
+}
+
+.debitListTableContainer {
+    overflow-y: auto;
+    height: 30rem;
+}
+
+.theadTable {
+    position: sticky;
+    top: 0;
+}
+
+.debitListTable {
+    width: 100%;
+}
+
+.debitListTable th,
+.debitListTable td {
+    border-bottom: 1px solid var(--gray-100);
+    padding: 0.75rem;
+    text-align: left;
+    background-color: white;
+}
