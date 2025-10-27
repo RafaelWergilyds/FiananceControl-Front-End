@@ -30,3 +30,7 @@
     background: none;
     cursor: pointer;
 }
+
+.closeButton:hover {
+    color: black;
+}

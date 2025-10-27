@@ -22,6 +22,14 @@ export function DebitList({ debits, setDebitList }: DebitListProps) {
         setIsModalOpen(false)
     }
 
+    const handleDeleteDebit = (debitToDelete: DebitType) => {
+        const debitsWithoutDeleteOne = debits.filter(debit => {
+            return debit != debitToDelete
+        })
+
+        setDebitList(debitsWithoutDeleteOne)
+    }
+
 
     const handleAddDebit = (newDebitData: Omit<DebitType, 'id' | 'moment'>) => {
         const newDebit = {
@@ -59,7 +67,7 @@ export function DebitList({ debits, setDebitList }: DebitListProps) {
                         </tr>
                     </thead>
                     <tbody>
-                        {debits.map((debit) => <Debit key={debit.id} {...debit} />)}
+                        {debits.map((debit) => <Debit debit={debit} deleteDebit={handleDeleteDebit} key={debit.id} />)}
                     </tbody>
                 </table>
             </div>
