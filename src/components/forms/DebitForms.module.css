@@ -52,7 +52,7 @@
     cursor: pointer;
 }
 
-.addButton {
+.submitButton {
     margin-top: 2rem;
     margin-left: 12rem;
     display: flex;
@@ -69,11 +69,7 @@
     transition: all 125ms;
 }
 
-.addButton:hover {
+.submitButton:hover {
     background: black;
     color: white;
-}
-
-.closeButton:hover {
-    color: blue
 }
