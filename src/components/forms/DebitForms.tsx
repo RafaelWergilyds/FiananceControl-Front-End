@@ -2,18 +2,20 @@ import { Plus } from "lucide-react"
 import styles from './DebitForms.module.css'
 import React, { useState } from "react";
 import type { Debit } from '../../models/Debit';
+import type { Category } from "../../models/Category";
 
 interface DebitFormsProps {
     formsType: string;
     initialDebit?: Debit;
+    categories: Category[]
     updateDebit?: (debit: Debit) => void;
-    addDebit?: (debit: { name: string, value: number, category: string }) => void;
+    addDebit?: (debit: { name: string, value: number, categoryId: number }) => void;
     onCloseModal?: () => void;
 }
 
-export function DebitForms({ addDebit, updateDebit, formsType, initialDebit, onCloseModal }: DebitFormsProps) {
+export function DebitForms({ categories, addDebit, updateDebit, formsType, initialDebit, onCloseModal }: DebitFormsProps) {
     const [name, setName] = useState(initialDebit?.name || '')
-    const [category, setCategory] = useState(initialDebit?.category || '')
+    const [categoryId, setCategoryId] = useState(initialDebit?.categoryId ?? 0)
     const [valueInCents, setValueToCents] = useState(initialDebit ? initialDebit.value * 100 : 0);
 
     const formatToBRL = (valueInCents: number) => {
@@ -40,7 +42,7 @@ export function DebitForms({ addDebit, updateDebit, formsType, initialDebit, onC
                 ...initialDebit,
                 name: name,
                 value: valueInCents / 100,
-                category: category
+                categoryId: categories.find(cat => cat.id === categoryId)?.id || initialDebit.categoryId
             })
         }
         onCloseModal?.()
@@ -51,12 +53,12 @@ export function DebitForms({ addDebit, updateDebit, formsType, initialDebit, onC
         addDebit?.({
             name: name,
             value: valueInCents / 100,
-            category: category
+            categoryId: categories.find(cat => cat.id === categoryId)?.id || 0
         })
 
         setName('')
         setValueToCents(0)
-        setCategory('')
+        setCategoryId(0)
         onCloseModal?.()
     }
 
@@ -71,7 +73,10 @@ export function DebitForms({ addDebit, updateDebit, formsType, initialDebit, onC
                         <label>Amount</label>
                         <input type="text" required value={valueFormated} onChange={handleChangePrice}></input>
                         <label>Category</label>
-                        <input type="text" required value={category} onChange={(event) => setCategory(event.target.value)}></input>
+                        <select className={styles.selectCategory} value={categoryId} onChange={(event) => setCategoryId(Number(event.target.value))}>
+                            <option value="">Sem Categoria</option>
+                            {categories.map(category => (<option key={category.id} value={category.id}>{category.name}</option>))}
+                        </select>
                     </div>
                     <button type="submit" className={styles.submitButton}><Plus /> add debit</button>
                 </form>
@@ -85,7 +90,10 @@ export function DebitForms({ addDebit, updateDebit, formsType, initialDebit, onC
                         <label>Amount</label>
                         <input type="text" required value={valueFormated} onChange={handleChangePrice}></input>
                         <label>Category</label>
-                        <input type="text" required value={category} onChange={(event) => setCategory(event.target.value)}></input>
+                        <select className={styles.selectCategory} value={categoryId} onChange={(event) => setCategoryId(Number(event.target.value))}>
+                            <option value="">Sem Categoria</option>
+                            {categories.map(category => (<option key={category.id} value={category.id}>{category.name}</option>))}
+                        </select>
                     </div>
                     <button type="submit" className={styles.submitButton}><Plus /> confirm</button>
                 </form>

@@ -2,6 +2,6 @@ export type Debit = {
     id: number;
     name: string;
     value: number;
-    category: string;
+    categoryId: number | null;
     moment: Date;
 }

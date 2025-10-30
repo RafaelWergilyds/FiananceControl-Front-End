@@ -5,13 +5,15 @@ import { Plus } from 'lucide-react';
 import { useState } from 'react';
 import { DebitForms } from '../forms/DebitForms';
 import { Modal } from '../modal/Modal';
+import type { Category } from '../../models/Category';
 
 interface DebitListProps {
     debits: DebitType[];
+    categories: Category[];
     setDebitList: React.Dispatch<React.SetStateAction<DebitType[]>>;
 }
 
-export function DebitList({ debits, setDebitList }: DebitListProps) {
+export function DebitList({ debits, categories, setDebitList }: DebitListProps) {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     const openModal = () => {
@@ -55,7 +57,7 @@ export function DebitList({ debits, setDebitList }: DebitListProps) {
                 <h2>Last Debits</h2>
                 <button className={styles.addDebitButton} onClick={openModal}><Plus />add debit</button>
                 <Modal isOpen={isModalOpen} onClose={closeModal} >
-                    <DebitForms formsType='addDebit' addDebit={handleAddDebit} />
+                    <DebitForms formsType='addDebit' categories={categories} addDebit={handleAddDebit} />
                 </Modal>
             </div>
             <div className={styles.debitListTableContainer}>
@@ -70,7 +72,7 @@ export function DebitList({ debits, setDebitList }: DebitListProps) {
                         </tr>
                     </thead>
                     <tbody>
-                        {debits.map((debit) => <Debit debit={debit} deleteDebit={handleDeleteDebit} updateDebit={handleUpdateDebit} key={debit.id} />)}
+                        {debits.map((debit) => <Debit debit={debit} categories={categories} deleteDebit={handleDeleteDebit} updateDebit={handleUpdateDebit} key={debit.id} />)}
                     </tbody>
                 </table>
             </div>

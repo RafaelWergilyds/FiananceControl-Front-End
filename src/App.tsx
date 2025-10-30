@@ -7,9 +7,12 @@ import { DebitList } from './components/debits/DebitList'
 import { Header } from './components/header/Header'
 import { Total } from './components/total/Total'
 import type { Debit } from './models/Debit'
+import { mockCategories } from './mockCategories'
+import type { Category } from './models/Category'
 
 export function App() {
   const [debitsList, setDebitsList] = useState<Debit[]>(mockDebits.map(debit => ({ ...debit, moment: new Date(debit.moment) })))
+  const [categoriesList, setCategoriesList] = useState<Category[]>(mockCategories)
 
   return (
     <>
@@ -19,7 +22,7 @@ export function App() {
           <Header />
           <Total debits={debitsList} />
           <br></br>
-          <DebitList debits={debitsList} setDebitList={setDebitsList} />
+          <DebitList debits={debitsList} categories={categoriesList} setDebitList={setDebitsList} />
         </main>
       </div>
     </>

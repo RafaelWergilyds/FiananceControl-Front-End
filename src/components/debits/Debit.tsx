@@ -6,16 +6,18 @@ import type { Debit } from '../../models/Debit.ts';
 import { useState } from 'react';
 import { Modal } from '../modal/Modal.tsx';
 import { DebitForms } from '../forms/DebitForms.tsx';
+import type { Category } from '../../models/Category.ts';
 
 interface DebitProps {
     debit: Debit
+    categories: Category[]
     updateDebit: (debitToUpadate: Debit) => void
     deleteDebit: (debitToDelete: Debit) => void
 }
 
 type ModalName = 'editButton' | 'deleteButton' | null
 
-export function Debit({ debit, deleteDebit, updateDebit }: DebitProps) {
+export function Debit({ debit, categories, deleteDebit, updateDebit }: DebitProps) {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [activeModal, setActiveModal] = useState<ModalName>(null)
@@ -30,17 +32,18 @@ export function Debit({ debit, deleteDebit, updateDebit }: DebitProps) {
         setIsModalOpen(false)
     }
 
+    const category = categories.find(category => category.id === debit.categoryId)
+    const categoryName = category ? category.name : 'Sem categoria';
+
     function handleDeleteDebit() {
         deleteDebit(debit)
     }
-
-
 
     return (
         <tr className={styles.debit}>
             <td>{debit.name}</td>
             <td>{toBRL(debit.value)}</td>
-            <td>{debit.category}</td>
+            <td>{categoryName}</td>
             <td>{dateFormat(debit.moment)}</td>
             <td>
                 <div className={styles.buttons}>
@@ -48,7 +51,7 @@ export function Debit({ debit, deleteDebit, updateDebit }: DebitProps) {
                     <button className={styles.deleteButton} onClick={() => openModal('deleteButton')}><Trash2 size={24} /></button>
                     <Modal isOpen={isModalOpen} onClose={closeModal}>
                         {activeModal === 'editButton' && (
-                            <DebitForms formsType='editDebit' initialDebit={debit} updateDebit={updateDebit} onCloseModal={closeModal} />
+                            <DebitForms formsType='editDebit' initialDebit={debit} categories={categories} updateDebit={updateDebit} onCloseModal={closeModal} />
                         )}
                         {activeModal === 'deleteButton' && (
                             <div className={styles.confirmationContent}>
