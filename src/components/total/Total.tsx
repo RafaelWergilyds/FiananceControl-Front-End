@@ -14,9 +14,13 @@ export function Total({ debits }: TotalProps) {
     }, [debits])
 
     return (
-        <div className={styles.total}>
-            <strong>Total Debits</strong >
-            <p>{toBRL(total)}</p>
-        </div>
+        <>
+            <div className={styles.total}>
+                <div className={styles.title}>
+                    <strong>Total do Mês</strong >
+                </div>
+                <p>{toBRL(total)}</p>
+            </div>
+        </>
     )
 }

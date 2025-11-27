@@ -1,11 +1,21 @@
 .header {
     background: white;
     display: flex;
-    padding: 2rem 2rem;
-    margin-bottom: 2rem;
+    padding: 1rem 1rem;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 2px 2px 5px rgba(5, 199, 233, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header img {
+    width: 50px;
+    margin: 30px;
+}
+
+.headerLogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .button {

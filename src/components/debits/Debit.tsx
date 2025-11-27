@@ -51,7 +51,7 @@ export function Debit({ debit, categories, deleteDebit, updateDebit }: DebitProp
                     <button className={styles.deleteButton} onClick={() => openModal('deleteButton')}><Trash2 size={24} /></button>
                     <Modal isOpen={isModalOpen} onClose={closeModal}>
                         {activeModal === 'editButton' && (
-                            <DebitForms formsType='editDebit' initialDebit={debit} categories={categories} updateDebit={updateDebit} onCloseModal={closeModal} />
+                            <DebitForms formsCategory='EDIT' initialDebit={debit} categories={categories} updateDebit={updateDebit} onCloseModal={closeModal} />
                         )}
                         {activeModal === 'deleteButton' && (
                             <div className={styles.confirmationContent}>

@@ -1,7 +1,7 @@
 .sidebar {
     padding: 0.75rem;
     width: 20rem;
-    background-color: rgb(231, 241, 244);
+    background-color: white;
     box-shadow: 2px 2px 5px rgba(5, 199, 233, 0.1);
 }
 
@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-.sidebar button {
+.sidebar a {
     width: 100%;
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@
     transition: all 125ms;
 }
 
-.sidebar button:hover {
-    background-color: rgb(200, 247, 255);
-    color: var(--black);
+.sidebar a:hover {
+    background-color: black;
+    color: white
 }

@@ -54,21 +54,21 @@ export function DebitList({ debits, categories, setDebitList }: DebitListProps) 
     return (
         <div className={styles.debitListContainer}>
             <div className={styles.title}>
-                <h2>Last Debits</h2>
-                <button className={styles.addDebitButton} onClick={openModal}><Plus />add debit</button>
+                <h2>Útimos Débitos</h2>
+                <button className={styles.addDebitButton} onClick={openModal}><Plus />Adicionar Débito</button>
                 <Modal isOpen={isModalOpen} onClose={closeModal} >
-                    <DebitForms formsType='addDebit' categories={categories} addDebit={handleAddDebit} />
+                    <DebitForms formsCategory='CREATE' categories={categories} addDebit={handleAddDebit} />
                 </Modal>
             </div>
             <div className={styles.debitListTableContainer}>
                 <table className={styles.debitListTable}>
                     <thead className={styles.theadTable}>
                         <tr>
-                            <th>Name</th>
-                            <th>Value</th>
-                            <th>Category</th>
-                            <th>Moment</th>
-                            <th>Actions</th>
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th>Categoria</th>
+                            <th>Data</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,4 +1,4 @@
-export type Debit = {
+export interface Debit {
     id: number;
     name: string;
     value: number;

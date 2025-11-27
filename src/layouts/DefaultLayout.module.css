@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    height: 100%;
+    gap: 2rem;
+}
+
+.wrapper main {
+    width: 100%;
+    max-width: 100rem;
+    margin-inline: auto;
+}
+
+.mainContent {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 12px;
+    }
+}
