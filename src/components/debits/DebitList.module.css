@@ -1,15 +1,21 @@
 .debitListContainer {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding: 0.75rem;
+    border-radius: 1rem;
     width: 75rem;
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(5, 199, 233, 0.1);
+    background: white;
+    box-shadow: var(--box-shadow);
+}
+
+.debit {
+    border-radius: 2rem;
+    border-bottom: 2rem solid white;
 }
 
 .title {
     display: flex;
-    padding-bottom: 1rem;
+    color: white;
+    border-radius: 1rem 1rem 0 0;
+    background: linear-gradient(to right, var(--green-6), var(--green-4));
+    padding: 1rem;
     justify-content: space-between;
 }
 
@@ -18,7 +24,7 @@
     align-items: center;
     gap: 0.5rem;
     background: transparent;
-    color: var(--black);
+    color: white;
     border: 1px;
     border-radius: 8px;
     height: 50px;
@@ -34,6 +40,8 @@
 }
 
 .debitListTableContainer {
+    background-color: var(--zinc-9);
+    border-radius: 0rem 0rem 1rem 1rem;
     overflow-y: auto;
     height: 30rem;
 }
@@ -49,8 +57,13 @@
 
 .debitListTable th,
 .debitListTable td {
-    border-bottom: 1px solid var(--gray-100);
+    color: white;
+    border-bottom: 1px solid var(--gray-4);
     padding: 0.75rem;
     text-align: left;
-    background-color: white;
+    background-color: var(--zinc-9);
+}
+
+.bodyTable {
+    border-bottom: white 2rem solid;
 }

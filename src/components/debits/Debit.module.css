@@ -1,27 +1,26 @@
 .buttons {
     display: flex;
     flex-direction: column;
-    align-items: end;
-    justify-content: space-between;
+    align-items: flex-start;
     gap: 1.5rem;
 }
 
 .deleteButton {
     background: transparent;
     border: none;
-    color: var(--black);
+    color: white;
     cursor: pointer;
 }
 
 .editButton {
     background: transparent;
     border: none;
-    color: var(--black);
+    color: white;
     cursor: pointer;
 }
 
 .debit .deleteButton:hover {
-    color: var(--red-500);
+    color: red;
 }
 
 .debit .editButton:hover {
@@ -46,7 +45,7 @@
     align-items: center;
     gap: 0.5rem;
     background: transparent;
-    color: var(--black);
+    color: white;
     border: 1px;
     border-radius: 8px;
     height: 50px;
@@ -61,7 +60,7 @@
     align-items: center;
     gap: 0.5rem;
     background: transparent;
-    color: var(--black);
+    color: white;
     border: 1px;
     border-radius: 8px;
     height: 50px;

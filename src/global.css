@@ -1,17 +1,30 @@
 :root {
     --black: #000000;
     --white: #FFFFFF;
-    --gray-100: #E1E1E6;
-    --gray-200: #CFCFD4;
-    --gray-300: #C4C4CC;
-    --gray-400: #8D8D99;
-    --gray-600: #323238;
-    --gray-700: #29292E;
-    --gray-800: #202024;
-    --gray-900: #121214;
+    --gray-1: oklch(98.5% 0.002 247.839);
+    --gray-2: oklch(95.9% 0.004 250.123);
+    --gray-3: oklch(93.2% 0.007 253.407);
+    --gray-4: oklch(90.1% 0.01 256.338);
+    --gray-5: oklch(85.7% 0.015 260.123);
+    --gray-6: oklch(78.9% 0.022 264.531);
+    --gray-7: oklch(69.8% 0.03 268.407);
+    --gray-8: oklch(58.3% 0.04 272.123);
+    --gray-9: oklch(43.5% 0.055 276.338);
+    --gray-10: oklch(27.8% 0.033 256.848);
+    --gray-11: oklch(13% 0.028 261.692);
 
-    --green-500: #00875F;
-    --red-500: #F75A68;
+    --green-1: oklch(98.2% 0.018 155.826);
+    --green-2: oklch(96.2% 0.044 156.743);
+    --green-3: oklch(92.5% 0.084 155.995);
+    --green-4: oklch(87.1% 0.15 154.449);
+    --green-5: oklch(79.2% 0.209 151.711);
+    --green-6: oklch(72.3% 0.219 149.579);
+    --green-7: oklch(50.8% 0.118 165.612);
+
+    --zinc-8: oklch(22.909% 0.01154 285.43);
+    --zinc-9: oklch(27.4% 0.006 286.033);
+
+    --box-shadow: 2px 2px 5px rgba(125, 255, 19, 0.185);
 }
 
 * {
@@ -21,8 +34,8 @@
 }
 
 body {
-    background: white;
-    color: var(--black);
+    background: var(--zinc-8);
+    color: white;
     -webkit-font-smoothing: antialiased;
 }
 
