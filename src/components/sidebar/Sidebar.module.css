@@ -7,7 +7,7 @@
     height: 20rem;
     border-radius: 1rem;
     background-color: var(--zinc-9);
-    box-shadow: 2px 2px 5px rgba(125, 255, 19, 0.185);
+    box-shadow: var(--box-shadow);
 }
 
 .sidebar a {

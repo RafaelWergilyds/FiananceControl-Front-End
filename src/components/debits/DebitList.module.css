@@ -1,7 +1,7 @@
 .debitListContainer {
     border-radius: 1rem;
     width: 75rem;
-    background: white;
+    background-color: var(--zinc-9);
     box-shadow: var(--box-shadow);
 }
 
@@ -12,9 +12,9 @@
 
 .title {
     display: flex;
-    color: white;
+    color: var(--gray-5);
     border-radius: 1rem 1rem 0 0;
-    background: linear-gradient(to right, var(--green-6), var(--green-4));
+    border-bottom: solid rgba(88, 88, 88, 0.397) 1px;
     padding: 1rem;
     justify-content: space-between;
 }
@@ -35,7 +35,7 @@
 }
 
 .debitListContainer .addDebitButton:hover {
-    background: black;
+    background: linear-gradient(to right, var(--green-6), var(--green-4));
     color: white;
 }
 
@@ -58,12 +58,8 @@
 .debitListTable th,
 .debitListTable td {
     color: white;
-    border-bottom: 1px solid var(--gray-4);
-    padding: 0.75rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.096);
+    padding: 2rem;
     text-align: left;
     background-color: var(--zinc-9);
-}
-
-.bodyTable {
-    border-bottom: white 2rem solid;
 }

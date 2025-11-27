@@ -66,7 +66,7 @@ export function DebitList({ debits, categories, setDebitList }: DebitListProps) 
                         <thead className={styles.theadTable}>
                             <tr>
                                 <th>Nome</th>
-                                <th>Valor</th>
+                                <th className={styles.valueHeader}>Valor</th>
                                 <th>Categoria</th>
                                 <th>Data</th>
                                 <th>Ações</th>
