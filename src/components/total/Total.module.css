@@ -10,15 +10,24 @@
 
 }
 
-.title {
+.total h1 {
+    text-transform: capitalize;
     padding: 1rem;
     font-size: 1.5rem;
     display: flex;
     color: var(--gray-5);
 }
 
+
+.total span {
+    display: flex;
+    text-align: center;
+}
+
 .total p {
     align-items: center;
+    display: flex;
+    gap: 1rem;
     margin-bottom: 1rem;
     padding: 1rem;
     font-weight: 400;

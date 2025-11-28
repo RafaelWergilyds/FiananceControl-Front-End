@@ -96,13 +96,13 @@ export function DebitForms({ categories, addDebit, updateDebit, formsCategory, i
             )}
             {formsCategory === 'EDIT' && (
                 <form className={styles.debitForms} onSubmit={handleUpdateDebit}>
-                    <h2>Edit Debit</h2>
+                    <h2>Atualizar Débito</h2>
                     <div className={styles.formsBody}>
-                        <label>Name</label>
+                        <label>Nome</label>
                         <input type="text" required value={name} onChange={(event) => setName(event.target.value)} onInvalid={handleNewDebitInvalid}></input>
-                        <label>Amount</label>
+                        <label>Valor</label>
                         <input type="text" required value={valueFormated} onChange={handleChangePrice} onInvalid={handleNewDebitInvalid}></input>
-                        <label>Category</label>
+                        <label>Categoria</label>
                         <select className={styles.selectCategory} value={categoryId ?? ""} onChange={(event) => setCategoryId(Number(event.target.value))}>
                             {categories.map(category => (<option key={category.id} value={category.id}>{category.name}</option>))}
                         </select>

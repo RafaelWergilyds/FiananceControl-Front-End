@@ -43,7 +43,7 @@ export function Debit({ debit, categories, deleteDebit, updateDebit }: DebitProp
         <>
             <tr className={styles.debit}>
                 <td>{debit.name}</td>
-                <td>{toBRL(debit.value)}</td>
+                <td className={styles.value}>{toBRL(debit.value)}</td>
                 <td>{categoryName}</td>
                 <td>{dateFormat(debit.moment)}</td>
                 <td>

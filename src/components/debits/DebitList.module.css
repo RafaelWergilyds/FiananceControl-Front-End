@@ -1,6 +1,7 @@
 .debitListContainer {
     border-radius: 1rem;
     width: 75rem;
+    max-height: max-content;
     background-color: var(--zinc-9);
     box-shadow: var(--box-shadow);
 }
@@ -15,8 +16,40 @@
     color: var(--gray-5);
     border-radius: 1rem 1rem 0 0;
     border-bottom: solid rgba(88, 88, 88, 0.397) 1px;
-    padding: 1rem;
+    padding: 2rem;
     justify-content: space-between;
+}
+
+.title h2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.searchForm input {
+    background: var(--zinc-9);
+    border: none;
+    align-items: center;
+    margin-right: 20rem;
+    border-bottom: 2px solid var(--gray-7);
+    padding: 0.75rem 1rem;
+    color: white;
+    width: 15rem;
+}
+
+.searchForm input:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.searchForm input:focus::placeholder {
+    color: var(--gray-5);
 }
 
 .addDebitButton {
@@ -35,15 +68,14 @@
 }
 
 .debitListContainer .addDebitButton:hover {
-    background: linear-gradient(to right, var(--green-6), var(--green-4));
+    background: var(--button-background-hover);
     color: white;
 }
 
 .debitListTableContainer {
-    background-color: var(--zinc-9);
+    padding: 0 2rem 0 2rem;
+    max-height: max-content;
     border-radius: 0rem 0rem 1rem 1rem;
-    overflow-y: auto;
-    height: 30rem;
 }
 
 .theadTable {
@@ -61,5 +93,9 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.096);
     padding: 2rem;
     text-align: left;
-    background-color: var(--zinc-9);
+}
+
+.valueHeader {
+    text-align: right;
+
 }

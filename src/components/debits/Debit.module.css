@@ -1,3 +1,7 @@
+.debit td.value {
+    margin: auto;
+}
+
 .buttons {
     display: flex;
     flex-direction: column;

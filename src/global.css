@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(1.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 :root {
     --black: #000000;
     --white: #FFFFFF;
@@ -24,7 +36,15 @@
     --zinc-8: oklch(24.565% 0.00944 285.65);
     --zinc-9: oklch(27.4% 0.006 286.033);
 
-    --box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    --box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+
+    --button-background-hover: linear-gradient(to right, var(--green-6), var(--green-7));
+
+    --fadeInUp-animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
 }
 
 * {

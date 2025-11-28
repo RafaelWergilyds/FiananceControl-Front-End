@@ -54,5 +54,5 @@
 }
 
 .header .logoutButton:hover {
-    background: linear-gradient(to right, var(--green-6), var(--green-4));
+    background: var(--button-background-hover);
 }

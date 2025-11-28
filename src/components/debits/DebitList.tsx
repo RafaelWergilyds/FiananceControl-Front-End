@@ -1,7 +1,7 @@
 import styles from './DebitList.module.css';
 import type { Debit as DebitType } from '../../models/Debit';
 import { Debit } from './Debit';
-import { Plus } from 'lucide-react';
+import { BanknoteArrowDown, Plus, Search } from 'lucide-react';
 import { useState } from 'react';
 import { DebitForms } from '../forms/DebitForms';
 import { Modal } from '../modal/Modal';
@@ -53,9 +53,12 @@ export function DebitList({ debits, categories, setDebitList }: DebitListProps) 
 
     return (
         <>
-            <div className={styles.debitListContainer}>
+            <div className={`${styles.debitListContainer} fade-in-up`}>
                 <div className={styles.title}>
-                    <h2>Útimos Débitos</h2>
+                    <h2><BanknoteArrowDown size={32} />Débitos</h2>
+                    <form className={styles.searchForm}>
+                        <Search /><input type="search" placeholder='Pesquisar' required />
+                    </form>
                     <button className={styles.addDebitButton} onClick={openModal}><Plus />Adicionar Débito</button>
                     <Modal isOpen={isModalOpen} onClose={closeModal} >
                         <DebitForms formsCategory='CREATE' categories={categories} addDebit={handleAddDebit} />
@@ -66,7 +69,7 @@ export function DebitList({ debits, categories, setDebitList }: DebitListProps) 
                         <thead className={styles.theadTable}>
                             <tr>
                                 <th>Nome</th>
-                                <th className={styles.valueHeader}>Valor</th>
+                                <th>Valor</th>
                                 <th>Categoria</th>
                                 <th>Data</th>
                                 <th>Ações</th>
