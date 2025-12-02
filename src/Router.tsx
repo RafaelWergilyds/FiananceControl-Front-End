@@ -7,6 +7,8 @@ import type { Debit } from "./models/Debit";
 import type { Category } from "./models/Category";
 import { Total } from "./components/total/Total";
 import { DefaultLayout } from "./layouts/DefaultLayout";
+import { Login } from "./components/authentication/Login";
+import { Register } from "./components/authentication/Register";
 
 interface RouterProps {
     debitsList: Debit[]
@@ -17,6 +19,8 @@ interface RouterProps {
 export function Router({ debitsList, categoriesList, setDebitsList }: RouterProps) {
     return (
         <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/" element={<DefaultLayout />}>
                 <Route path="/painel" element={<Painel />} />
                 <Route path="/debits" element={<>

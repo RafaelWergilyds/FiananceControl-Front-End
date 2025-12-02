@@ -41,32 +41,34 @@ export function Debit({ debit, categories, deleteDebit, updateDebit }: DebitProp
 
     return (
         <>
-            <tr className={styles.debit}>
-                <td>{debit.name}</td>
-                <td className={styles.value}>{toBRL(debit.value)}</td>
-                <td>{categoryName}</td>
-                <td>{dateFormat(debit.moment)}</td>
-                <td>
-                    <div className={styles.buttons}>
-                        <button className={styles.editButton} onClick={() => openModal('editButton')}><Edit size={24} /></button>
-                        <button className={styles.deleteButton} onClick={() => openModal('deleteButton')}><Trash2 size={24} /></button>
-                        <Modal isOpen={isModalOpen} onClose={closeModal}>
-                            {activeModal === 'editButton' && (
-                                <DebitForms formsCategory='EDIT' initialDebit={debit} categories={categories} updateDebit={updateDebit} onCloseModal={closeModal} />
-                            )}
-                            {activeModal === 'deleteButton' && (
-                                <div className={styles.confirmationContent}>
-                                    <p>Tem certeza que deseja excluir este débito?</p>
-                                    <div className={styles.confirmationButtons}>
-                                        <button className={styles.yesButton} onClick={handleDeleteDebit}>Yes</button>
-                                        <button className={styles.noButton} onClick={closeModal}>No</button>
-                                    </div>
-                                </div>
-                            )}
-                        </Modal>
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                {activeModal === 'editButton' && (
+                    <DebitForms formsCategory='EDIT' initialDebit={debit} categories={categories} updateDebit={updateDebit} onCloseModal={closeModal} />
+                )}
+                {activeModal === 'deleteButton' && (
+                    <div className={styles.confirmationContent}>
+                        <p>Tem certeza que deseja excluir este débito?</p>
+                        <div className={styles.confirmationButtons}>
+                            <button className={styles.yesButton} onClick={handleDeleteDebit}>Yes</button>
+                            <button className={styles.noButton} onClick={closeModal}>No</button>
+                        </div>
                     </div>
-                </td>
-            </tr>
+                )}
+            </Modal>
+            <div className={styles.debit}>
+                <div className={styles.debitName}>
+                    <p>{debit.name}</p>
+                </div>
+                <div className={styles.debitInfo}>
+                    <p className={styles.value}>{toBRL(debit.value)}</p>
+                    <p>{categoryName}</p>
+                    <p>{dateFormat(debit.moment)}</p>
+                </div>
+                <div className={styles.buttons}>
+                    <button className={styles.editButton} onClick={() => openModal('editButton')}><Edit size={24} /></button>
+                    <button className={styles.deleteButton} onClick={() => openModal('deleteButton')}><Trash2 size={24} /></button>
+                </div>
+            </div>
         </>
     )
 }

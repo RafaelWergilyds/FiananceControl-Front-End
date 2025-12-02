@@ -77,25 +77,3 @@
     max-height: max-content;
     border-radius: 0rem 0rem 1rem 1rem;
 }
-
-.theadTable {
-    position: sticky;
-    top: 0;
-}
-
-.debitListTable {
-    width: 100%;
-}
-
-.debitListTable th,
-.debitListTable td {
-    color: white;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.096);
-    padding: 2rem;
-    text-align: left;
-}
-
-.valueHeader {
-    text-align: right;
-
-}

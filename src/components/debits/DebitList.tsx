@@ -53,6 +53,9 @@ export function DebitList({ debits, categories, setDebitList }: DebitListProps) 
 
     return (
         <>
+            <Modal isOpen={isModalOpen} onClose={closeModal} >
+                <DebitForms formsCategory='CREATE' categories={categories} addDebit={handleAddDebit} />
+            </Modal>
             <div className={`${styles.debitListContainer} fade-in-up`}>
                 <div className={styles.title}>
                     <h2><BanknoteArrowDown size={32} />Débitos</h2>
@@ -60,25 +63,9 @@ export function DebitList({ debits, categories, setDebitList }: DebitListProps) 
                         <Search /><input type="search" placeholder='Pesquisar' required />
                     </form>
                     <button className={styles.addDebitButton} onClick={openModal}><Plus />Adicionar Débito</button>
-                    <Modal isOpen={isModalOpen} onClose={closeModal} >
-                        <DebitForms formsCategory='CREATE' categories={categories} addDebit={handleAddDebit} />
-                    </Modal>
                 </div>
                 <div className={styles.debitListTableContainer}>
-                    <table className={styles.debitListTable}>
-                        <thead className={styles.theadTable}>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Valor</th>
-                                <th>Categoria</th>
-                                <th>Data</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody className={styles.bodyTable}>
-                            {debits.map((debit) => <Debit debit={debit} categories={categories} deleteDebit={handleDeleteDebit} updateDebit={handleUpdateDebit} key={debit.id} />)}
-                        </tbody>
-                    </table>
+                    {debits.map((debit) => <Debit debit={debit} categories={categories} deleteDebit={handleDeleteDebit} updateDebit={handleUpdateDebit} key={debit.id} />)}
                 </div>
             </div >
         </>
