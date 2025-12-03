@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 export const api = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://localhost:8070',
 })
 
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('accessToken')
+        const token = localStorage.getItem('@FinanceControl:token')
 
         if (token) {
             config.headers.Authorization = `Bearer ${token}`
@@ -17,3 +17,15 @@ api.interceptors.request.use(
         return Promise.reject(error)
     }
 )
+
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response.status === 401) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = '/login';
+        }
+        return Promise.reject(error);
+    }
+);

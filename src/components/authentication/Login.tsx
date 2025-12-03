@@ -1,32 +1,16 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styles from './Login.module.css'
-import React, { useEffect, useState } from 'react'
-import { api } from '../../services/api'
+import React, { useState } from 'react'
+import { useAuth } from '../../context/AuthHook'
 
 export function Login() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        localStorage.removeItem('accessToken');
-    }, []);
-
+    const auth = useAuth();
     async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        try {
-            const response = await api.post('/auth/login', { email, password })
-
-            const { token } = response.data;
-
-            localStorage.setItem('accessToken', token)
-
-            navigate('/painel')
-
-        } catch (error) {
-            console.error('Login Error', error)
-        }
+        auth!.signIn(email, password)
     }
 
 

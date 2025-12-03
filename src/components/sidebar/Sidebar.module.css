@@ -25,6 +25,7 @@
     margin-bottom: 0.75rem;
     cursor: pointer;
     transition: all 125ms;
+    text-decoration: none;
 }
 
 .sidebar a:hover {

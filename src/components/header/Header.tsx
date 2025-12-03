@@ -1,8 +1,15 @@
 import { CircleUser, LogOut } from 'lucide-react';
 import styles from './Header.module.css';
 import financeControlLogo from '../../assets/finance-control-logo.svg'
+import { useAuth } from '../../context/AuthHook';
 
 export function Header() {
+    const auth = useAuth();
+
+    function handleLogout() {
+        auth!.signOut()
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.headerLogo}>
@@ -11,7 +18,7 @@ export function Header() {
             </div>
             <div className={styles.button}>
                 <button className={styles.profileButton}><CircleUser /></button>
-                <button className={styles.logoutButton}><LogOut />Sair</button>
+                <button onClick={handleLogout} className={styles.logoutButton}><LogOut />Sair</button>
             </div>
         </header>
     );

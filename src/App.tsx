@@ -4,7 +4,8 @@ import { mockDebits } from './mockDebits'
 import type { Debit } from './models/Debit'
 import { mockCategories } from './mockCategories'
 import type { Category } from './models/Category'
-import { Router } from './Router'
+import { Router } from './routes/Router'
+import { AuthProvider } from './context/AuthProvider'
 
 export function App() {
   const [debitsList, setDebitsList] = useState<Debit[]>(mockDebits.map(debit => ({ ...debit, moment: new Date(debit.moment) })))
@@ -12,8 +13,10 @@ export function App() {
 
   return (
     <>
-      <Router debitsList={debitsList} categoriesList={categoriesList} setDebitsList={setDebitsList}>
-      </Router>
+      <AuthProvider>
+        <Router debitsList={debitsList} categoriesList={categoriesList} setDebitsList={setDebitsList}>
+        </Router>
+      </AuthProvider>
     </>
   )
 }
