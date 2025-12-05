@@ -15,7 +15,7 @@ export function Total({ debits }: TotalProps) {
     const actualMonth = format(actualDate, 'MMMM', { locale: ptBR })
 
     const total = useMemo(() => {
-        return debits.reduce((acc, debit) => debit.value + acc, 0)
+        return debits.reduce((acc, debit) => debit.amount + acc, 0)
     }, [debits])
 
     const oldValue = useRef(0)

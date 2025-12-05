@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react"
 import { AuthContext, type User } from "./AuthContext"
-import { api } from "../services/api"
+import { api } from "../api/api"
 import { useNavigate } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 

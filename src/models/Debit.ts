@@ -1,7 +1,7 @@
 export interface Debit {
     id: number;
     name: string;
-    value: number;
+    amount: number;
     categoryId: number | null;
     moment: Date;
 }

@@ -1,12 +1,11 @@
 import styles from './DebitList.module.css';
-import type { Debit as DebitType } from '../../models/Debit';
+import { debitService, type Debit as DebitType } from '../../api/services/debitService';
 import { Debit } from './Debit';
 import { BanknoteArrowDown, Plus, Search } from 'lucide-react';
 import { useState } from 'react';
 import { DebitForms } from '../forms/DebitForms';
 import { Modal } from '../modal/Modal';
 import type { Category } from '../../models/Category';
-
 interface DebitListProps {
     debits: DebitType[];
     categories: Category[];
@@ -36,17 +35,17 @@ export function DebitList({ debits, categories, setDebitList }: DebitListProps) 
         setDebitList(currentDebits => currentDebits.map(debit => debit.id === debitToUpdate.id ? debitToUpdate : debit))
     };
 
-    const handleAddDebit = (newDebitData: Omit<DebitType, 'id' | 'moment'>) => {
-        const newDebit = {
-            ...newDebitData,
-            id: debits.length + 1,
-            moment: new Date()
-        }
+    const handleAddDebit = async (newDebitData: Omit<DebitType, 'id' | 'moment'>) => {
 
-        setDebitList((oldDebits) => [
-            newDebit,
-            ...oldDebits
-        ])
+        try {
+            const newDebit = await debitService.create(newDebitData)
+            setDebitList((oldDebits) => [
+                newDebit,
+                ...oldDebits
+            ])
+        } catch (error) {
+            console.log(error)
+        }
 
         closeModal()
     }

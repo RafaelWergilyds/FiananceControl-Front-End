@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './Register.module.css'
-import { api } from '../../services/api'
+import { api } from '../../api/api'
 import { useEffect, useState } from 'react'
 
 export function Register() {

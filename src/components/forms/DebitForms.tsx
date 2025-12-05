@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react"
 import styles from './DebitForms.module.css'
 import React, { useState } from "react";
-import type { Debit } from '../../models/Debit';
+import type { Debit } from '../../api/services/debitService';
 import type { Category } from "../../models/Category";
 
 type FormsCategory = "CREATE" | "EDIT";
@@ -11,18 +11,18 @@ interface DebitFormsProps {
     initialDebit?: Debit;
     categories: Category[]
     updateDebit?: (debit: Debit) => void;
-    addDebit?: (debit: { name: string, value: number, categoryId: number | null }) => void;
+    addDebit?: (debit: { name: string, amount: number, categoryId: number | null }) => void;
     onCloseModal?: () => void;
 }
 
 export function DebitForms({ categories, addDebit, updateDebit, formsCategory, initialDebit, onCloseModal }: DebitFormsProps) {
     const [name, setName] = useState(initialDebit?.name || '')
     const [categoryId, setCategoryId] = useState(initialDebit?.categoryId ?? null)
-    const [valueInCents, setValueToCents] = useState(initialDebit ? initialDebit.value * 100 : 0);
+    const [amountInCents, setAmountInCents] = useState(initialDebit ? initialDebit.amount * 100 : 0);
     const isNewDebitNameEmpty = name.length === 0;
 
-    function formatToBRL(valueInCents: number) {
-        const value = valueInCents / 100;
+    function formatToBRL(amountInCents: number) {
+        const value = amountInCents / 100;
         return new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL',
@@ -33,11 +33,11 @@ export function DebitForms({ categories, addDebit, updateDebit, formsCategory, i
         event.target.setCustomValidity('')
         const valueInput = event.target.value;
         const digits = valueInput.replace(/\D/g, '')
-        const valueCents = parseInt(digits, 10) || 0
-        setValueToCents(valueCents)
+        const amountCents = parseInt(digits, 10) || 0
+        setAmountInCents(amountCents)
 
     }
-    const valueFormated = formatToBRL(valueInCents)
+    const amountFormated = formatToBRL(amountInCents)
 
     function handleUpdateDebit(event: React.FormEvent) {
         event.preventDefault()
@@ -45,7 +45,7 @@ export function DebitForms({ categories, addDebit, updateDebit, formsCategory, i
             updateDebit?.({
                 ...initialDebit,
                 name: name,
-                value: valueInCents / 100,
+                amount: amountInCents / 100,
                 categoryId: categories.find(category => category.id === categoryId)?.id || initialDebit.categoryId || null
             })
         }
@@ -56,12 +56,12 @@ export function DebitForms({ categories, addDebit, updateDebit, formsCategory, i
         event.preventDefault()
         addDebit?.({
             name: name,
-            value: valueInCents / 100,
-            categoryId: categories.find(category => category.id === categoryId)?.id || null
+            amount: amountInCents / 100,
+            categoryId: null
         })
 
         setName('')
-        setValueToCents(0)
+        setAmountInCents(0)
         setCategoryId(0)
         onCloseModal?.()
     }
@@ -84,7 +84,7 @@ export function DebitForms({ categories, addDebit, updateDebit, formsCategory, i
                         <label>Nome</label>
                         <input type="text" required value={name} onChange={handleTextInput} onInvalid={handleNewDebitInvalid}></input>
                         <label>Valor</label>
-                        <input type="text" required value={valueFormated} onChange={handleChangePrice} onInvalid={handleNewDebitInvalid}></input>
+                        <input type="text" required value={amountFormated} onChange={handleChangePrice} onInvalid={handleNewDebitInvalid}></input>
                         <label>Categoria</label>
                         <select className={styles.selectCategory} value={categoryId ?? ""} onChange={(event) => setCategoryId(Number(event.target.value))}>
                             <option value="">Sem Categoria</option>
@@ -101,7 +101,7 @@ export function DebitForms({ categories, addDebit, updateDebit, formsCategory, i
                         <label>Nome</label>
                         <input type="text" required value={name} onChange={(event) => setName(event.target.value)} onInvalid={handleNewDebitInvalid}></input>
                         <label>Valor</label>
-                        <input type="text" required value={valueFormated} onChange={handleChangePrice} onInvalid={handleNewDebitInvalid}></input>
+                        <input type="text" required value={amountFormated} onChange={handleChangePrice} onInvalid={handleNewDebitInvalid}></input>
                         <label>Categoria</label>
                         <select className={styles.selectCategory} value={categoryId ?? ""} onChange={(event) => setCategoryId(Number(event.target.value))}>
                             {categories.map(category => (<option key={category.id} value={category.id}>{category.name}</option>))}
